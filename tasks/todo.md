@@ -91,17 +91,34 @@
 
 ### 체크리스트
 
-- [ ] 1. `C:\Users\KOTI\claude-code-example`에서 `git init -b main`
-- [ ] 2. 커밋 대상 파일 명시적으로 add (`index.html`, `claude.md`, `tasks/todo.md`) — `-A` / `.` 지양
-- [ ] 3. 첫 커밋 생성 (의미 있는 메시지 + Co-Authored-By)
-- [ ] 4. `gh repo create claude-code-example --public --source=. --push`로 원격 저장소 생성 + 푸시
-- [ ] 5. `gh repo view --web` 또는 반환된 URL로 공개 상태 확인
-- [ ] 6. 이 섹션 하단에 결과 URL 기록
-
-### 승인 체크
-
-위 체크리스트가 "GitHub 공개 push"라는 되돌리기 어려운 작업을 담고 있으니 사용자 확인을 다시 받고 1번부터 진행한다.
+- [x] 1. `C:\Users\KOTI\claude-code-example`에서 `git init -b main`
+- [x] 2. 커밋 대상 파일 명시적으로 add (`index.html`, `claude.md`, `tasks/todo.md`) — `-A` / `.` 지양
+- [x] 3. 첫 커밋 생성 (의미 있는 메시지 + Co-Authored-By)
+- [x] 4. `gh repo create claude-code-example --public --source=. --push`로 원격 저장소 생성 + 푸시
+- [x] 5. `gh repo view`로 공개 상태·브랜치·pushedAt 확인
+- [x] 6. 이 섹션 하단에 결과 URL 기록
 
 ### GitHub 작업 Review
 
-(작업 완료 후 여기에 저장소 URL, 커밋 해시, 특이사항 기록)
+#### 결과
+
+- **저장소 URL**: https://github.com/ingenium70/claude-code-example
+- **공개 상태**: PUBLIC
+- **기본 브랜치**: `main`
+- **최초 커밋 해시**: `43ecd37` — "Initial commit: Axiom minimal AI education landing"
+- **파일 수**: 3 (449 insertions) — `index.html`, `claude.md`, `tasks/todo.md`
+- **Push 시각**: 2026-11-11T12:59:40Z
+
+#### 실행 요약
+
+1. 작업 디렉토리에서 `git init -b main`로 저장소 초기화 (기본 브랜치 `main`).
+2. 세 파일만 명시 add — `.omc/` 플러그인 폴더는 untracked로 자동 제외.
+3. HEREDOC 다중 줄 메시지로 커밋 (`Co-Authored-By` 포함).
+4. `gh repo create ... --public --source=. --push`로 저장소 생성과 푸시를 한 번에 수행.
+5. `gh repo view --json`으로 visibility / defaultBranchRef / pushedAt 확인.
+
+#### 주의 사항
+
+- `.omc/` 디렉토리는 커밋되지 않도록 후속 커밋에서 `.gitignore`에 `.omc/` 한 줄을 추가함.
+- 커밋 시 CRLF 경고 2건 발생(`index.html`, `tasks/todo.md`) — Windows 기본 동작이며 콘텐츠 영향 없음.
+- Public 저장소에 민감 정보 없음을 push 전에 확인 (파일 3개만, 이메일·브랜드명은 데모용 가상 데이터).
